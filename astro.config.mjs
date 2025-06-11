@@ -7,9 +7,16 @@ export default defineConfig({
 	experimental: {
 		fonts: [
 			{
-				provider: fontProviders.google(),
+				provider: fontProviders.fontsource(),
 				name: 'Gabarito',
 				cssVariable: '--font-gabarito',
+				weights: ['400 900'],
+			},
+			{
+				provider: fontProviders.fontsource(),
+				name: 'Geist Mono',
+				cssVariable: '--font-geist-mono',
+				weights: ['100 900'],
 			},
 		],
 	},

@@ -2,4 +2,30 @@
 
 @theme inline {
 	--font-sans: var(--font-gabarito);
+	--font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+	h1 {
+		@apply text-5xl font-bold;
+	}
+	h2 {
+		@apply text-4xl font-bold;
+	}
+	h3 {
+		@apply text-3xl font-bold;
+	}
+	h4 {
+		@apply text-2xl font-bold;
+	}
+
+	p,
+	span,
+	a {
+		@apply text-xl;
+	}
+
+	code {
+		@apply font-mono text-lg;
+	}
 }
