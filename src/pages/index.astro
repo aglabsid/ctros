@@ -1,11 +1,27 @@
 ---
-import '../styles/global.css'
-import Layout from '../layouts/Layout.astro'
+import '@/styles/global.css'
+import RootLayout from '@/layouts/root-layout.astro'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<h1 class="text-3xl font-bold underline">Hello world!</h1>
-</Layout>
+<RootLayout>
+	<div
+		class="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center"
+	>
+		<h1 class="text-5xl font-bold">Hello Ctros!</h1>
+		<p class="mt-2">
+			Everyone has the right to freedom of thought, conscience and religion;
+			this right includes freedom to change his religion or belief, and freedom,
+			either alone or in community with others and in public or private, to
+			manifest his religion or belief in teaching, practice, worship and
+			observance. Everyone has the right to freedom of opinion and expression;
+			this right includes freedom to hold opinions without interference and to
+			seek, receive and impart information and ideas through any media and
+			regardless of frontiers. Everyone has the right to rest and leisure,
+			including reasonable limitation of working hours and periodic holidays
+			with pay.
+		</p>
+	</div>
+</RootLayout>
