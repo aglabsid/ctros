@@ -1,6 +1,8 @@
 ---
 import '@/styles/global.css'
 import RootLayout from '@/layouts/root-layout.astro'
+import { Button } from '@/components/ui/button'
+import { Moon } from 'lucide-react'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -27,5 +29,7 @@ import RootLayout from '@/layouts/root-layout.astro'
 			holidays with pay.
 		</p>
 		<p>1234567890!@#$%^&*()_+{}[];</p>
+		<Button variant="outline">Ini button</Button>
+		<Button variant="outline" size="icon" title="Icon button"><Moon /></Button>
 	</div>
 </RootLayout>
