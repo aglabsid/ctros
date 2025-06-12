@@ -56,6 +56,13 @@
 }
 
 @layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+
 	h1 {
 		@apply text-5xl font-bold;
 	}
@@ -93,7 +100,7 @@
 	--secondary-foreground: oklch(0.2084 0.0417 266.3592);
 	--muted: oklch(0.9288 0.0126 255.5078);
 	--muted-foreground: oklch(0.3717 0.0392 257.287);
-	--accent: oklch(0.7176 0.1344 251.6163);
+	--accent: oklch(0.9288 0.0126 255.5078);
 	--accent-foreground: oklch(0.2084 0.0417 266.3592);
 	--destructive: oklch(0.5771 0.2152 27.325);
 	--destructive-foreground: oklch(0.9705 0.0129 17.3797);
@@ -180,13 +187,4 @@
 	--shadow-xl:
 		0px 1px 0px 0px hsl(0 0% 0% / 0), 0px 8px 10px -1px hsl(0 0% 0% / 0);
 	--shadow-2xl: 0px 1px 0px 0px hsl(0 0% 0% / 0);
-}
-
-@layer base {
-	* {
-		@apply border-border outline-ring/50;
-	}
-	body {
-		@apply bg-background text-foreground;
-	}
 }
