@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+
+const software = await getCollection('software')
+---
+
+<RootLayout>
+	<div>
+		<h1>Equipments</h1>
+		<ul>
+			{
+				software.map((item) => (
+					<li>
+						<h2>{item.data.name}</h2>
+						<ul>
+							{item.data.items.map((item) => (
+								<li>
+									<a
+										set:html={item.name}
+										href={item.link}
+										target="_blank"
+										rel="noopener noreferrer"
+									/>
+								</li>
+							))}
+						</ul>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</RootLayout>
