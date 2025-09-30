@@ -27,14 +27,14 @@ const navigations = [
 ]
 ---
 
-<nav class="border-b">
-	<div class="mx-auto max-w-5xl px-4 py-2">
+<nav class="sticky top-0 z-10 w-full border-b bg-background shadow">
+	<div class="mx-auto max-w-3xl px-4 py-2 md:px-0">
 		<ul class="flex items-center space-x-2">
 			{
 				navigations.map((item) => (
 					<li>
 						<a
-							class="inline-block px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
+							class="block px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
 							href={item.href}
 						>
 							{item.title}
