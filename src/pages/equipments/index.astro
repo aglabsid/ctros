@@ -3,31 +3,67 @@ import { getCollection } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 
 const software = await getCollection('software')
+const hardware = await getCollection('hardware')
 ---
 
 <RootLayout>
-	<main class="mx-auto max-w-5xl border-x p-6">
-		<h1>Equipments</h1>
-		<ul>
-			{
-				software.map((item) => (
-					<li>
-						<h2>{item.data.name}</h2>
-						<ul>
-							{item.data.items.map((item) => (
-								<li>
-									<a
-										set:html={item.name}
-										href={item.link}
-										target="_blank"
-										rel="noopener noreferrer"
-									/>
-								</li>
-							))}
-						</ul>
-					</li>
-				))
-			}
-		</ul>
+	<main class="mx-auto max-w-5xl border-x">
+		<section class="border-b p-6">
+			<h1>Equipments</h1>
+			<p class="mt-2 text-muted-foreground">
+				Some of the tools / peripherals that I'm using.
+			</p>
+		</section>
+
+		<div class="grid lg:grid-cols-2">
+			<section class="space-y-4 border-b py-6 lg:border-r lg:border-b-0">
+				<h2 class="border-b px-6 pb-2 text-2xl">Software</h2>
+				{
+					software.map((category) => (
+						<div class="space-y-1 px-6">
+							<h3 class="text-lg font-semibold">{category.data.name}</h3>
+							<ul class="list-disc space-y-1 pl-6">
+								{category.data.items.map((item) => (
+									<li>
+										<a
+											set:html={item.name}
+											href={item.link}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-base no-underline hover:underline"
+										/>
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</section>
+
+			<section class="space-y-4 py-6">
+				<h2 class="border-b px-6 pb-2 text-2xl">Hardware</h2>
+				{
+					hardware.map((category) => (
+						<div class="space-y-1 px-6">
+							<h3 class="text-lg font-semibold">{category.data.name}</h3>
+							<ul class="list-disc space-y-1 pl-6">
+								{category.data.items.map((item) => (
+									<li>
+										<span class="text-base" set:html={item.name} />
+										{item.subitems && item.subitems.length > 0 && (
+											<ul class="list-[square] space-y-1 pl-6">
+												{item.subitems.map((subitem) => (
+													<li set:html={subitem} />
+												))}
+											</ul>
+										)}
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</section>
+		</div>
 	</main>
 </RootLayout>

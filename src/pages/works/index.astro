@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+import ProjectCard from '@/components/project-card.astro'
+
+const projects = await getCollection('project')
+
+// Sort by position
+const sortedProjects = projects.sort(
+	(a, b) => (a.data.position ?? 999) - (b.data.position ?? 999),
+)
+---
+
+<RootLayout>
+	<main class="mx-auto max-w-5xl border-x">
+		<section class="border-b p-6">
+			<h1>Works</h1>
+			<p class="mt-2 text-muted-foreground">Projects and experiments</p>
+		</section>
+
+		<div class="grid gap-4 p-6 md:grid-cols-2">
+			{sortedProjects.map((project) => <ProjectCard project={project} />)}
+		</div>
+
+		{
+			sortedProjects.length === 0 && (
+				<div class="p-6 text-center text-muted-foreground">
+					<p>No projects yet. Check back soon!</p>
+				</div>
+			)
+		}
+	</main>
+</RootLayout>
