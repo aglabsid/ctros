@@ -1,0 +1,36 @@
+[
+	{
+		"id": "main",
+		"avatar": "./avatar.png",
+		"name": "Your Name",
+		"username": "yourusername",
+		"summary": "A brief summary about yourself",
+		"description": [
+			"First paragraph of description.",
+			"Second paragraph of description."
+		],
+		"skills": [
+			{
+				"name": "Frontend",
+				"items": ["React", "Vue", "Astro"]
+			},
+			{
+				"name": "Backend",
+				"items": ["Node.js", "Python"]
+			}
+		],
+		"social": {
+			"description": "Connect with me",
+			"links": [
+				{
+					"name": "GitHub",
+					"url": "https://github.com/yourusername"
+				},
+				{
+					"name": "Twitter",
+					"url": "https://twitter.com/yourusername"
+				}
+			]
+		}
+	}
+]
