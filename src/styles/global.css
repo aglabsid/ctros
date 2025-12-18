@@ -1,7 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
 	--font-sans: var(--font-gabarito);
@@ -59,26 +56,6 @@
 }
 
 :root {
-	--background: oklch(0.9842 0.0034 247.8575);
-	--foreground: oklch(0.2084 0.0417 266.3592);
-	--card: oklch(0.9842 0.0034 247.8575);
-	--card-foreground: oklch(0.2084 0.0417 266.3592);
-	--popover: oklch(0.9842 0.0034 247.8575);
-	--popover-foreground: oklch(0.2084 0.0417 266.3592);
-	--primary: oklch(0.4694 0.1392 254.4588);
-	--primary-foreground: oklch(0.9842 0.0034 247.8575);
-	--secondary: oklch(0.9842 0.0034 247.8575);
-	--secondary-foreground: oklch(0.2084 0.0417 266.3592);
-	--muted: oklch(0.9288 0.0126 255.5078);
-	--muted-foreground: oklch(0.3717 0.0392 257.287);
-	--destructive: oklch(0.5771 0.2152 27.325);
-	--destructive-foreground: oklch(0.9705 0.0129 17.3797);
-	--border: oklch(0.9288 0.0126 255.5078);
-	--input: oklch(0.9288 0.0126 255.5078);
-	--ring: oklch(0.4694 0.1392 254.4588);
-}
-
-.dark {
 	--background: oklch(0.2084 0.0417 266.3592);
 	--foreground: oklch(0.9842 0.0034 247.8575);
 	--card: oklch(0.2084 0.0417 266.3592);
