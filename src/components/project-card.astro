@@ -10,7 +10,7 @@ const { project } = Astro.props
 const { title, thumbnail, description } = project.data
 ---
 
-<article class="group border">
+<article class="group flex h-full flex-col border">
 	<div class="relative flex flex-col justify-center overflow-hidden">
 		<img
 			src={thumbnail.src}
@@ -26,8 +26,10 @@ const { title, thumbnail, description } = project.data
 			<ChevronRight className="size-4" />
 		</a>
 	</div>
-	<div class="space-y-1 px-3 py-2 transition-colors group-hover:bg-muted/50">
+	<div
+		class="flex-1 space-y-1 px-3 py-2 transition-colors group-hover:bg-muted/50"
+	>
 		<h3 class="text-xl font-bold">{title}</h3>
-		<p class="text-muted-foreground">{description}</p>
+		<p class="line-clamp-2 text-muted-foreground">{description}</p>
 	</div>
 </article>

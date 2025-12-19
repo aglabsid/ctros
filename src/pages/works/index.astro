@@ -15,10 +15,12 @@ const sortedProjects = projects.sort(
 	<main class="mx-auto max-w-5xl border-x">
 		<section class="border-b p-6">
 			<h1>Works</h1>
-			<p class="mt-2 text-muted-foreground">Projects and experiments</p>
+			<p class="mt-2 text-muted-foreground">
+				Projects and experiments I've worked on.
+			</p>
 		</section>
 
-		<div class="grid gap-4 p-6 md:grid-cols-2">
+		<div class="grid gap-4 p-6 sm:grid-cols-2 lg:grid-cols-3">
 			{sortedProjects.map((project) => <ProjectCard project={project} />)}
 		</div>
 

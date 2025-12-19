@@ -18,20 +18,17 @@ const { avatar, name, username, description, skills, social } = about.data
 				<img
 					src={avatar.src}
 					alt={name}
-					class="size-32 rounded-full border-2 border-primary object-cover"
+					class="size-32 border-4 border-primary object-cover"
 				/>
-				<div class="text-center md:text-left">
+				<div class="space-y-1">
 					<h1 class="text-4xl">{name}</h1>
 					<p class="text-muted-foreground">@{username}</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="border-b p-6">
-			<h2 class="mb-4 text-2xl">About</h2>
-			<div class="space-y-4">
-				{description.map((paragraph) => <p class="text-lg">{paragraph}</p>)}
-			</div>
+		<section class="space-y-2.5 border-b p-6">
+			{description.map((paragraph) => <p class="text-lg">{paragraph}</p>)}
 		</section>
 
 		<section class="border-b p-6">
@@ -43,7 +40,7 @@ const { avatar, name, username, description, skills, social } = about.data
 							<h3 class="mb-2 text-xl font-semibold">{skill.name}</h3>
 							<ul class="flex flex-wrap gap-2">
 								{skill.items.map((item) => (
-									<li class="rounded-md bg-muted px-3 py-1 text-sm">{item}</li>
+									<li class="bg-muted px-2.5 py-1 text-sm">{item}</li>
 								))}
 							</ul>
 						</div>
@@ -63,7 +60,7 @@ const { avatar, name, username, description, skills, social } = about.data
 								href={link.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="inline-block rounded-md border px-4 py-2 transition-colors hover:bg-muted"
+								class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
 							>
 								{link.name}
 							</a>

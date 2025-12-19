@@ -36,11 +36,17 @@
 	h4 {
 		@apply text-2xl font-bold;
 	}
+	h5 {
+		@apply text-xl font-bold;
+	}
+	h6 {
+		@apply text-lg font-bold;
+	}
 
 	p,
 	span,
 	a {
-		@apply text-xl;
+		@apply text-lg;
 	}
 
 	code {
@@ -53,9 +59,9 @@
 
 	--background: oklch(0.2084 0.0417 266.3592);
 	--foreground: oklch(0.9842 0.0034 247.8575);
-	--primary: oklch(0.7176 0.1344 251.6163);
+	--primary: oklch(62.3% 0.214 259.815);
 	--muted: oklch(0.3717 0.0392 257.287);
 	--muted-foreground: oklch(0.9288 0.0126 255.5078);
 	--border: oklch(0.2795 0.0368 260.031);
-	--ring: oklch(0.7176 0.1344 251.6163);
+	--ring: oklch(62.3% 0.214 259.815);
 }

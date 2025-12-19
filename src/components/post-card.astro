@@ -24,7 +24,7 @@ const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
 			class="h-full w-full object-cover transition-transform group-hover:scale-105"
 		/>
 		<time
-			datetime={createdAt}
+			datetime={createdAt.toISOString()}
 			class="absolute bottom-0 z-10 bg-background/50 px-2 py-1 text-sm backdrop-blur-sm"
 		>
 			{formattedDate}

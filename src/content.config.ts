@@ -77,8 +77,8 @@ const post = defineCollection({
 			summary: z.string(),
 			tags: z.array(z.string()),
 			author: z.string(),
-			createdAt: z.string(),
-			updatedAt: z.string(),
+			createdAt: z.date(),
+			updatedAt: z.date(),
 		}),
 })
 
