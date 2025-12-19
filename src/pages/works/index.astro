@@ -1,13 +1,29 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import ProjectCard from '@/components/project-card.astro'
 
 const projects = await getCollection('project')
 
-// Sort by position
+// Categories are already in order from JSON array
+const categories = await getCollection('projectCategory')
+
+// Sort projects by position
 const sortedProjects = projects.sort(
 	(a, b) => (a.data.position ?? 999) - (b.data.position ?? 999),
+)
+
+// Group projects by category id
+const projectsByCategory = sortedProjects.reduce(
+	(acc, project) => {
+		const categoryId = project.data.category.id
+		if (!acc[categoryId]) {
+			acc[categoryId] = []
+		}
+		acc[categoryId].push(project)
+		return acc
+	},
+	{} as Record<string, typeof sortedProjects>,
 )
 ---
 
@@ -20,9 +36,24 @@ const sortedProjects = projects.sort(
 			</p>
 		</section>
 
-		<div class="grid gap-4 p-6 sm:grid-cols-2 lg:grid-cols-3">
-			{sortedProjects.map((project) => <ProjectCard project={project} />)}
-		</div>
+		{
+			categories.map(
+				(category) =>
+					projectsByCategory[category.id] && (
+						<section class="border-b last:border-b-0">
+							<div class="flex items-stretch border-b">
+								<h2 class="px-6 py-3 text-2xl">{category.data.name}</h2>
+								<div class="flex-1 border-l diagonal-lines" />
+							</div>
+							<div class="grid gap-4 p-6 sm:grid-cols-2 lg:grid-cols-3">
+								{projectsByCategory[category.id].map((project) => (
+									<ProjectCard project={project} />
+								))}
+							</div>
+						</section>
+					),
+			)
+		}
 
 		{
 			sortedProjects.length === 0 && (

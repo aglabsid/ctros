@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection, reference, z } from 'astro:content'
 import { file, glob } from 'astro/loaders'
 
 const software = defineCollection({
@@ -54,6 +54,13 @@ const about = defineCollection({
 		}),
 })
 
+const projectCategory = defineCollection({
+	loader: file('src/data/project-categories.json'),
+	schema: z.object({
+		name: z.string(),
+	}),
+})
+
 const project = defineCollection({
 	loader: glob({ pattern: '**/*.mdx', base: './src/content/project' }),
 	schema: ({ image }) =>
@@ -61,6 +68,7 @@ const project = defineCollection({
 			title: z.string(),
 			thumbnail: image(),
 			description: z.string(),
+			category: reference('projectCategory'),
 			github: z.string().optional(),
 			demo: z.string().optional(),
 			position: z.number().optional(),
@@ -86,6 +94,7 @@ export const collections = {
 	software,
 	hardware,
 	about,
+	projectCategory,
 	project,
 	post,
 }
