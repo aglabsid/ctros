@@ -65,3 +65,13 @@
 	--border: oklch(0.2795 0.0368 260.031);
 	--ring: oklch(62.3% 0.214 259.815);
 }
+
+@utility diagonal-lines {
+	background-image: repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 6px,
+		var(--border) 6px,
+		var(--border) 8px
+	);
+}
