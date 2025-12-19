@@ -16,7 +16,7 @@ const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
 })
 ---
 
-<article class="group border">
+<article class="group isolate border">
 	<div class="relative flex h-40 flex-col justify-center overflow-hidden">
 		<img
 			src={thumbnail.src}
@@ -25,11 +25,11 @@ const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
 		/>
 		<time
 			datetime={createdAt.toISOString()}
-			class="absolute bottom-0 z-10 bg-background/50 px-2 py-1 text-sm backdrop-blur-sm"
+			class="absolute bottom-0 z-20 bg-background/50 px-2 py-1 text-sm backdrop-blur-sm"
 		>
 			{formattedDate}
 		</time>
-		<div class="absolute top-0 right-0 z-10 m-1 flex gap-1">
+		<div class="absolute top-0 right-0 z-20 m-1 flex gap-1">
 			{
 				tags.map((tag) => (
 					<span class="bg-background/50 px-2 py-1 text-xs backdrop-blur-sm">
@@ -41,7 +41,7 @@ const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
 		<a
 			href={`/blog/${post.id}`}
 			aria-label={`View details of post: ${title}`}
-			class="absolute flex h-full w-full items-center justify-center gap-2 opacity-0 transition-opacity group-hover:bg-background/75 group-hover:opacity-100 group-hover:backdrop-blur-sm focus:bg-background/75 focus:opacity-100 focus:backdrop-blur-sm"
+			class="absolute z-10 flex h-full w-full items-center justify-center gap-2 opacity-0 transition-opacity group-hover:bg-background/75 group-hover:opacity-100 group-hover:backdrop-blur-sm focus:bg-background/75 focus:opacity-100 focus:backdrop-blur-sm"
 		>
 			<span>Continue reading</span>
 			<ChevronRight className="size-4" />
