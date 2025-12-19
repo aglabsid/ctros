@@ -26,17 +26,18 @@ const latestPosts = posts
 			}
 		</section>
 
-		<section class="p-6">
-			<div class="mb-4 flex items-center justify-between">
-				<h2 class="text-2xl">Latest posts</h2>
+		<section>
+			<div class="flex items-stretch border-b">
+				<h2 class="px-6 py-3 text-2xl">Latest posts</h2>
+				<div class="flex-1 border-l diagonal-lines"></div>
 				<a
 					href="/blog"
-					class="text-base text-muted-foreground transition-colors hover:text-foreground"
+					class="flex items-center border-l px-6 text-base text-muted-foreground transition-colors hover:text-foreground"
 				>
-					View all posts →
+					View all →
 				</a>
 			</div>
-			<div class="grid gap-4">
+			<div class="grid gap-4 p-6">
 				{latestPosts.map((post) => <PostCard post={post} />)}
 			</div>
 			{

@@ -13,7 +13,7 @@ const { avatar, name, username, description, skills, social } = about.data
 
 <RootLayout>
 	<main class="mx-auto max-w-5xl border-x">
-		<section class="flex items-stretch border-b p-6">
+		<section class="border-b p-6">
 			<div class="flex items-center gap-6 pr-6">
 				<img
 					src={avatar.src}
@@ -25,16 +25,18 @@ const { avatar, name, username, description, skills, social } = about.data
 					<p class="text-muted-foreground">@{username}</p>
 				</div>
 			</div>
-			<div class="hidden flex-1 border diagonal-lines sm:block"></div>
 		</section>
 
 		<section class="space-y-2.5 border-b p-6">
 			{description.map((paragraph) => <p class="text-lg">{paragraph}</p>)}
 		</section>
 
-		<section class="border-b p-6">
-			<h2 class="mb-4 text-2xl">Skills</h2>
-			<div class="grid gap-6 md:grid-cols-2">
+		<section class="border-b">
+			<div class="flex items-stretch border-b">
+				<h2 class="px-6 py-3 text-2xl">Skills</h2>
+				<div class="flex-1 border-l diagonal-lines"></div>
+			</div>
+			<div class="grid gap-6 p-6 md:grid-cols-2">
 				{
 					skills.map((skill) => (
 						<div>
@@ -50,25 +52,30 @@ const { avatar, name, username, description, skills, social } = about.data
 			</div>
 		</section>
 
-		<section class="p-6">
-			<h2 class="mb-2 text-2xl">Connect</h2>
-			<p class="mb-4 text-muted-foreground">{social.description}</p>
-			<ul class="flex flex-wrap gap-3">
-				{
-					social.links.map((link) => (
-						<li>
-							<a
-								href={link.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
-							>
-								{link.name}
-							</a>
-						</li>
-					))
-				}
-			</ul>
+		<section>
+			<div class="flex items-stretch border-b">
+				<h2 class="px-6 py-3 text-2xl">Connect</h2>
+				<div class="flex-1 border-l diagonal-lines"></div>
+			</div>
+			<div class="p-6">
+				<p class="mb-4 text-muted-foreground">{social.description}</p>
+				<ul class="flex flex-wrap gap-3">
+					{
+						social.links.map((link) => (
+							<li>
+								<a
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
+								>
+									{link.name}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
 		</section>
 	</main>
 </RootLayout>
