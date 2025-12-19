@@ -10,6 +10,24 @@ const sortedPosts = posts.sort(
 	(a, b) =>
 		new Date(b.data.createdAt).getTime() - new Date(a.data.createdAt).getTime(),
 )
+
+// Group posts by year
+const postsByYear = sortedPosts.reduce(
+	(acc, post) => {
+		const year = new Date(post.data.createdAt).getFullYear()
+		if (!acc[year]) {
+			acc[year] = []
+		}
+		acc[year].push(post)
+		return acc
+	},
+	{} as Record<number, typeof sortedPosts>,
+)
+
+// Get years sorted descending
+const years = Object.keys(postsByYear)
+	.map(Number)
+	.sort((a, b) => b - a)
 ---
 
 <RootLayout>
@@ -21,9 +39,18 @@ const sortedPosts = posts.sort(
 			</p>
 		</section>
 
-		<div class="grid gap-4 p-6">
-			{sortedPosts.map((post) => <PostCard post={post} />)}
-		</div>
+		{
+			years.map((year) => (
+				<section class="border-b last:border-b-0">
+					<h2 class="border-b px-6 py-3 text-2xl">{year}</h2>
+					<div class="grid gap-4 p-6">
+						{postsByYear[year].map((post) => (
+							<PostCard post={post} />
+						))}
+					</div>
+				</section>
+			))
+		}
 
 		{
 			sortedPosts.length === 0 && (
