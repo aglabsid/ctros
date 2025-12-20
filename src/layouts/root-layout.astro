@@ -3,6 +3,7 @@ import { Font } from 'astro:assets'
 
 import MobileNav from '@/components/mobile-nav'
 import Navigation from './navigation.astro'
+import Footer from './footer.astro'
 
 import '@/styles/global.css'
 ---
@@ -21,6 +22,11 @@ import '@/styles/global.css'
 	<body>
 		<Navigation />
 		<MobileNav client:media="(max-width: 640px)" />
-		<slot />
+
+		<main class="mx-auto max-w-5xl border-x">
+			<slot />
+		</main>
+
+		<Footer />
 	</body>
 </html>

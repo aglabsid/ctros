@@ -24,36 +24,34 @@ const projectsByCategory = sortedProjects.reduce(
 ---
 
 <RootLayout>
-	<main class="mx-auto max-w-5xl border-x">
-		<section class="border-b p-3 sm:p-6">
-			<h1>Works</h1>
-			<p class="mt-2 text-muted-foreground">
-				Projects and experiments I've worked on.
-			</p>
-		</section>
+	<section class="border-b p-3 sm:p-6">
+		<h1>Works</h1>
+		<p class="mt-2 text-muted-foreground">
+			Projects and experiments I've worked on.
+		</p>
+	</section>
 
-		{
-			categories.map(
-				(category) =>
-					projectsByCategory[category.id] && (
-						<section class="border-b last:border-b-0">
-							<SectionHeader title={category.data.name} />
-							<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
-								{projectsByCategory[category.id].map((project) => (
-									<ProjectCard project={project} />
-								))}
-							</div>
-						</section>
-					),
-			)
-		}
+	{
+		categories.map(
+			(category) =>
+				projectsByCategory[category.id] && (
+					<section class="border-b last:border-b-0">
+						<SectionHeader title={category.data.name} />
+						<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
+							{projectsByCategory[category.id].map((project) => (
+								<ProjectCard project={project} />
+							))}
+						</div>
+					</section>
+				),
+		)
+	}
 
-		{
-			sortedProjects.length === 0 && (
-				<div class="p-3 text-center text-muted-foreground sm:p-6">
-					<p>No projects yet. Check back soon!</p>
-				</div>
-			)
-		}
-	</main>
+	{
+		sortedProjects.length === 0 && (
+			<div class="p-3 text-center text-muted-foreground sm:p-6">
+				<p>No projects yet. Check back soon!</p>
+			</div>
+		)
+	}
 </RootLayout>
