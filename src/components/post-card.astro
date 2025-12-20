@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content'
 import { ChevronRight } from 'lucide-react'
 
-interface Props {
+type Props = {
 	post: CollectionEntry<'post'>
 }
 
@@ -48,7 +48,7 @@ const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
 		</a>
 	</div>
 	<div class="space-y-1 px-3 py-2 transition-colors group-hover:bg-muted/50">
-		<h3 class="text-xl font-bold">{title}</h3>
+		<h3 class="text-xl font-bold sm:text-2xl">{title}</h3>
 		<p class="text-muted-foreground">{summary}</p>
 	</div>
 </article>

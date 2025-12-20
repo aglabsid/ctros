@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
+import SectionHeader from '@/components/section-header.astro'
 
 const software = await getCollection('software')
 const hardware = await getCollection('hardware')
@@ -8,7 +9,7 @@ const hardware = await getCollection('hardware')
 
 <RootLayout>
 	<main class="mx-auto max-w-5xl border-x">
-		<section class="border-b p-6">
+		<section class="border-b p-3 sm:p-6">
 			<h1>Equipments</h1>
 			<p class="mt-2 text-muted-foreground">
 				Some of the tools / peripherals that I'm using currently.
@@ -17,15 +18,14 @@ const hardware = await getCollection('hardware')
 
 		<div class="grid lg:grid-cols-2">
 			<section class="border-b lg:border-r lg:border-b-0">
-				<div class="flex items-stretch border-b">
-					<h2 class="px-6 py-3 text-2xl">Software</h2>
-					<div class="flex-1 border-l diagonal-lines"></div>
-				</div>
-				<div class="space-y-4 py-6">
+				<SectionHeader title="Software" />
+				<div class="space-y-2 py-3 sm:space-y-3 sm:py-6">
 					{
 						software.map((category) => (
-							<div class="space-y-1 px-6">
-								<h3 class="text-lg font-semibold">{category.data.name}</h3>
+							<div class="space-y-1 px-3 sm:px-6">
+								<h3 class="text-lg font-semibold sm:text-xl">
+									{category.data.name}
+								</h3>
 								<ul class="list-disc space-y-1 pl-6">
 									{category.data.items.map((item) => (
 										<li>
@@ -34,7 +34,7 @@ const hardware = await getCollection('hardware')
 												href={item.link}
 												target="_blank"
 												rel="noopener noreferrer"
-												class="text-base no-underline hover:underline"
+												class="no-underline hover:underline"
 											/>
 										</li>
 									))}
@@ -46,21 +46,20 @@ const hardware = await getCollection('hardware')
 			</section>
 
 			<section>
-				<div class="flex items-stretch border-b">
-					<h2 class="px-6 py-3 text-2xl">Hardware</h2>
-					<div class="flex-1 border-l diagonal-lines"></div>
-				</div>
-				<div class="space-y-4 py-6">
+				<SectionHeader title="Hardware" />
+				<div class="space-y-2 py-3 sm:space-y-3 sm:py-6">
 					{
 						hardware.map((category) => (
-							<div class="space-y-1 px-6">
-								<h3 class="text-lg font-semibold">{category.data.name}</h3>
+							<div class="space-y-1 px-3 sm:px-6">
+								<h3 class="text-lg font-semibold sm:text-xl">
+									{category.data.name}
+								</h3>
 								<ul class="list-disc space-y-1 pl-6">
 									{category.data.items.map((item) => (
 										<li>
-											<span class="text-base" set:html={item.name} />
+											<span set:html={item.name} />
 											{item.subitems && item.subitems.length > 0 && (
-												<ul class="list-[square] space-y-1 pl-6">
+												<ul class="mt-1 list-[square] space-y-1 pl-6">
 													{item.subitems.map((subitem) => (
 														<li set:html={subitem} />
 													))}

@@ -16,8 +16,8 @@ export default function MobileNav() {
 	return (
 		<>
 			<nav className="sticky top-0 z-50 w-full border-b bg-background sm:hidden">
-				<div className="flex items-center justify-between px-4 py-2">
-					<a href="/" className="text-xl font-bold">
+				<div className="flex items-center justify-between px-3 py-2">
+					<a href="/" className="px-2 py-1 text-xl font-bold">
 						Ctros
 					</a>
 					<button
@@ -41,7 +41,7 @@ export default function MobileNav() {
 			{/* Menu */}
 			<div
 				className={cn(
-					'fixed top-14 right-0 z-20 h-[calc(100vh-56px)] w-48 border-l bg-background transition-transform sm:hidden',
+					'fixed top-14 right-0 z-20 h-[calc(100vh-56px)] w-52 border-l bg-background transition-transform sm:hidden',
 					{
 						'translate-x-0': isOpen,
 						'translate-x-full': !isOpen,

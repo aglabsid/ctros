@@ -11,5 +11,14 @@
 				"name": "Another Item"
 			}
 		]
+	},
+	{
+		"id": "peripherals",
+		"name": "Peripherals",
+		"items": [
+			{
+				"name": "Example Peripheral"
+			}
+		]
 	}
 ]

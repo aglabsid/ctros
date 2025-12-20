@@ -2,16 +2,14 @@
 import { getCollection } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import PostCard from '@/components/post-card.astro'
+import SectionHeader from '@/components/section-header.astro'
 
 const posts = await getCollection('post')
-
-// Sort by createdAt descending
 const sortedPosts = posts.sort(
 	(a, b) =>
 		new Date(b.data.createdAt).getTime() - new Date(a.data.createdAt).getTime(),
 )
 
-// Group posts by year
 const postsByYear = sortedPosts.reduce(
 	(acc, post) => {
 		const year = new Date(post.data.createdAt).getFullYear()
@@ -24,7 +22,6 @@ const postsByYear = sortedPosts.reduce(
 	{} as Record<number, typeof sortedPosts>,
 )
 
-// Get years sorted descending
 const years = Object.keys(postsByYear)
 	.map(Number)
 	.sort((a, b) => b - a)
@@ -32,7 +29,7 @@ const years = Object.keys(postsByYear)
 
 <RootLayout>
 	<main class="mx-auto max-w-5xl border-x">
-		<section class="border-b p-6">
+		<section class="border-b p-3 sm:p-6">
 			<h1>Blog</h1>
 			<p class="mt-2 text-muted-foreground">
 				Thoughts, ideas, and explorations I've had.
@@ -42,11 +39,8 @@ const years = Object.keys(postsByYear)
 		{
 			years.map((year) => (
 				<section class="border-b last:border-b-0">
-					<div class="flex items-stretch border-b">
-						<h2 class="px-6 py-3 text-2xl">{year}</h2>
-						<div class="diagonal-lines flex-1 border-l" />
-					</div>
-					<div class="grid gap-4 p-6">
+					<SectionHeader title={year.toString()} />
+					<div class="grid gap-2 p-3 sm:gap-3 sm:p-6">
 						{postsByYear[year].map((post) => (
 							<PostCard post={post} />
 						))}
@@ -57,7 +51,7 @@ const years = Object.keys(postsByYear)
 
 		{
 			sortedPosts.length === 0 && (
-				<div class="p-6 text-center text-muted-foreground">
+				<div class="p-3 text-center text-muted-foreground sm:p-6">
 					<p>No posts yet. Check back soon!</p>
 				</div>
 			)

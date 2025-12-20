@@ -25,28 +25,28 @@
 	}
 
 	h1 {
-		@apply text-5xl font-bold;
+		@apply text-4xl font-bold sm:text-5xl;
 	}
 	h2 {
-		@apply text-4xl font-bold;
+		@apply text-3xl font-bold sm:text-4xl;
 	}
 	h3 {
-		@apply text-3xl font-bold;
+		@apply text-2xl font-bold sm:text-3xl;
 	}
 	h4 {
-		@apply text-2xl font-bold;
+		@apply text-xl font-bold sm:text-2xl;
 	}
 	h5 {
-		@apply text-xl font-bold;
+		@apply text-lg font-bold sm:text-xl;
 	}
 	h6 {
-		@apply text-lg font-bold;
+		@apply text-base font-bold sm:text-lg;
 	}
 
 	p,
 	span,
 	a {
-		@apply text-lg;
+		@apply text-base sm:text-lg;
 	}
 
 	code {

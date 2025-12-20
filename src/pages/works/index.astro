@@ -1,19 +1,15 @@
 ---
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import ProjectCard from '@/components/project-card.astro'
+import SectionHeader from '@/components/section-header.astro'
 
 const projects = await getCollection('project')
-
-// Categories are already in order from JSON array
 const categories = await getCollection('projectCategory')
-
-// Sort projects by position
 const sortedProjects = projects.sort(
 	(a, b) => (a.data.position ?? 999) - (b.data.position ?? 999),
 )
 
-// Group projects by category id
 const projectsByCategory = sortedProjects.reduce(
 	(acc, project) => {
 		const categoryId = project.data.category.id
@@ -29,7 +25,7 @@ const projectsByCategory = sortedProjects.reduce(
 
 <RootLayout>
 	<main class="mx-auto max-w-5xl border-x">
-		<section class="border-b p-6">
+		<section class="border-b p-3 sm:p-6">
 			<h1>Works</h1>
 			<p class="mt-2 text-muted-foreground">
 				Projects and experiments I've worked on.
@@ -41,11 +37,8 @@ const projectsByCategory = sortedProjects.reduce(
 				(category) =>
 					projectsByCategory[category.id] && (
 						<section class="border-b last:border-b-0">
-							<div class="flex items-stretch border-b">
-								<h2 class="px-6 py-3 text-2xl">{category.data.name}</h2>
-								<div class="flex-1 border-l diagonal-lines" />
-							</div>
-							<div class="grid gap-4 p-6 sm:grid-cols-2 lg:grid-cols-3">
+							<SectionHeader title={category.data.name} />
+							<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
 								{projectsByCategory[category.id].map((project) => (
 									<ProjectCard project={project} />
 								))}
@@ -57,7 +50,7 @@ const projectsByCategory = sortedProjects.reduce(
 
 		{
 			sortedProjects.length === 0 && (
-				<div class="p-6 text-center text-muted-foreground">
+				<div class="p-3 text-center text-muted-foreground sm:p-6">
 					<p>No projects yet. Check back soon!</p>
 				</div>
 			)
