@@ -66,6 +66,10 @@
 	--ring: oklch(62.3% 0.214 259.815);
 }
 
+@utility min-h-content {
+	@apply min-h-[calc(100dvh-56px-44px-3px)] sm:min-h-[calc(100dvh-60px-72px-3px)];
+}
+
 @utility diagonal-lines {
 	background-image: repeating-linear-gradient(
 		-45deg,

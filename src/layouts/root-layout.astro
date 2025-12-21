@@ -23,7 +23,9 @@ import '@/styles/global.css'
 		<Navigation />
 		<MobileNav client:media="(max-width: 640px)" />
 
-		<main class="mx-auto max-w-5xl border-x">
+		<main
+			class="relative z-2 mx-auto mb-11.5 min-h-content max-w-5xl flex-1 border-x bg-background sm:mb-18.5"
+		>
 			<slot />
 		</main>
 
