@@ -5,7 +5,7 @@
 	--default-transition-duration: var(--default-transition-duration);
 
 	--font-sans: var(--font-gabarito);
-	--font-mono: var(--font-jetbrains-mono);
+	--font-mono: var(--font-google-sans-code);
 
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);

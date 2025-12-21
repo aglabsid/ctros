@@ -17,8 +17,8 @@ export default defineConfig({
 			},
 			{
 				provider: fontProviders.fontsource(),
-				name: 'JetBrains Mono',
-				cssVariable: '--font-jetbrains-mono',
+				name: 'Google Sans Code',
+				cssVariable: '--font-google-sans-code',
 				weights: ['400 900'],
 				display: 'swap',
 				fallbacks: ['monospace'],
