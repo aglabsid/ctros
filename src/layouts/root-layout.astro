@@ -6,6 +6,8 @@ import Navigation from './navigation.astro'
 import Footer from './footer.astro'
 
 import '@/styles/global.css'
+
+const pathname = Astro.url.pathname
 ---
 
 <!doctype html>
@@ -22,7 +24,7 @@ import '@/styles/global.css'
 	</head>
 	<body>
 		<Navigation />
-		<MobileNav client:media="(max-width: 640px)" />
+		<MobileNav client:media="(max-width: 640px)" pathname={pathname} />
 
 		<main
 			class="relative z-2 mx-auto mb-11.5 min-h-content max-w-5xl flex-1 border-x bg-background sm:mb-18.5"

@@ -1,16 +1,10 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+
+import { navigations } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
-const navigations = [
-	{ title: 'Home', href: '/' },
-	{ title: 'About', href: '/about' },
-	{ title: 'Blog', href: '/blog' },
-	{ title: 'Works', href: '/works' },
-	{ title: 'Equipments', href: '/equipments' },
-]
-
-export default function MobileNav() {
+export default function MobileNav({ pathname }: { pathname: string }) {
 	const [isOpen, setIsOpen] = useState(false)
 
 	return (
@@ -53,7 +47,14 @@ export default function MobileNav() {
 						<li key={item.href}>
 							<a
 								href={item.href}
-								className="block border-b px-6 py-4 transition-colors hover:bg-muted/50"
+								className={cn(
+									'block border-b px-6 py-4 transition-colors hover:bg-muted/50',
+									{
+										'bg-muted/50':
+											(pathname === item.href && !item.hasDetails) ||
+											(pathname.startsWith(item.href) && item.hasDetails),
+									},
+								)}
 								onClick={() => setIsOpen(false)}
 							>
 								{item.title}

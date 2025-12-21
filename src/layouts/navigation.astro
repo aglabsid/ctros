@@ -1,26 +1,6 @@
 ---
-const navigations = [
-	{
-		title: 'Home',
-		href: '/',
-	},
-	{
-		title: 'About',
-		href: '/about',
-	},
-	{
-		title: 'Blog',
-		href: '/blog',
-	},
-	{
-		title: 'Works',
-		href: '/works',
-	},
-	{
-		title: 'Equipments',
-		href: '/equipments',
-	},
-]
+import { navigations } from '@/lib/constants'
+const pathname = Astro.url.pathname
 ---
 
 <nav class="sticky top-0 z-10 hidden w-full border-b bg-background sm:block">
@@ -30,7 +10,14 @@ const navigations = [
 				navigations.map((item) => (
 					<li>
 						<a
-							class="block px-4 py-2 transition-colors hover:bg-gray-100/5"
+							class:list={[
+								'block px-4 py-2 transition-colors hover:bg-muted/50',
+								{
+									'bg-muted/50':
+										(pathname === item.href && !item.hasDetails) ||
+										(pathname.startsWith(item.href) && item.hasDetails),
+								},
+							]}
 							href={item.href}
 						>
 							{item.title}
