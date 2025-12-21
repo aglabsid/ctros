@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
+import PostComment from '@/components/post-comment'
+import { formatDate, getReadingTime } from '@/lib/utils'
 
 import H1 from '@/components/mdx/h1.astro'
 import H2 from '@/components/mdx/h2.astro'
@@ -18,7 +20,6 @@ import ListItem from '@/components/mdx/list-item.astro'
 import Table from '@/components/mdx/table.astro'
 import TableHeader from '@/components/mdx/table-header.astro'
 import TableCell from '@/components/mdx/table-cell.astro'
-import { formatDate, getReadingTime } from '@/lib/utils'
 
 export async function getStaticPaths() {
 	const posts = await getCollection('post')
@@ -57,8 +58,8 @@ const components = {
 ---
 
 <RootLayout>
-	<article class="space-y-4 p-3 sm:p-6">
-		<figure class="overflow-hidden border bg-muted text-center">
+	<article>
+		<figure class="overflow-hidden bg-muted text-center">
 			<img
 				src={thumbnail.src}
 				alt={`Thumbnail for article ${title}`}
@@ -73,22 +74,38 @@ const components = {
 			}
 		</figure>
 
-		<div class="flex items-center text-sm font-medium text-muted-foreground">
-			<span class="flex items-center gap-2">
-				<span>Published at</span>
-				<time datetime={createdAt.toISOString()}>{formattedDate}</time>
-			</span>
-			<span class="mx-2">・</span>
-			<span>{readingTime} minute(s) read</span>
+		<div class="space-y-3 p-3 sm:p-6">
+			<div class="flex items-center text-sm font-medium text-muted-foreground">
+				<span class="flex items-center gap-2">
+					<span>Published at</span>
+					<time datetime={createdAt.toISOString()}>{formattedDate}</time>
+				</span>
+				<span class="mx-2">・</span>
+				<span>{readingTime} minute(s) read</span>
+			</div>
+
+			<h1>{title}</h1>
+			<p class="text-muted-foreground">{summary}</p>
+
+			<div class="flex items-center gap-2">
+				{
+					tags.map((tag) => (
+						<span class="bg-muted px-2 py-1 text-sm">{tag}</span>
+					))
+				}
+			</div>
 		</div>
 
-		<h1>{title}</h1>
-		<p class="text-muted-foreground">{summary}</p>
-
-		<div class="flex items-center gap-2">
-			{tags.map((tag) => <span class="bg-muted px-2 py-1 text-sm">{tag}</span>)}
-		</div>
 		<hr class="border-border" />
-		<Content components={components} />
+
+		<section class="p-3 sm:p-6">
+			<Content components={components} />
+		</section>
+
+		<hr class="border-border" />
+
+		<section class="p-3 sm:p-6">
+			<PostComment client:load />
+		</section>
 	</article>
 </RootLayout>
