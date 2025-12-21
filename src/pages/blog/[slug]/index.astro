@@ -1,0 +1,94 @@
+---
+import { getCollection, render } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+
+import H1 from '@/components/mdx/h1.astro'
+import H2 from '@/components/mdx/h2.astro'
+import H3 from '@/components/mdx/h3.astro'
+import H4 from '@/components/mdx/h4.astro'
+import ExternalLink from '@/components/mdx/external-link.astro'
+import Figure from '@/components/mdx/figure.astro'
+import Paragraph from '@/components/mdx/paragraph.astro'
+import Code from '@/components/mdx/code.astro'
+import Blockquote from '@/components/mdx/blockquote.astro'
+import HorizontalRule from '@/components/mdx/horizontal-rule.astro'
+import UnorderedList from '@/components/mdx/unordered-list.astro'
+import OrderedList from '@/components/mdx/ordered-list.astro'
+import ListItem from '@/components/mdx/list-item.astro'
+import Table from '@/components/mdx/table.astro'
+import TableHeader from '@/components/mdx/table-header.astro'
+import TableCell from '@/components/mdx/table-cell.astro'
+import { formatDate, getReadingTime } from '@/lib/utils'
+
+export async function getStaticPaths() {
+	const posts = await getCollection('post')
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}))
+}
+
+const { post } = Astro.props
+const { title, thumbnail, thumbnailCredit, summary, tags, createdAt } =
+	post.data
+const { Content } = await render(post)
+
+const readingTime = getReadingTime(post.body ?? '')
+const formattedDate = formatDate(createdAt, 'long')
+
+const components = {
+	h1: H1,
+	h2: H2,
+	h3: H3,
+	h4: H4,
+	a: ExternalLink,
+	img: Figure,
+	p: Paragraph,
+	code: Code,
+	blockquote: Blockquote,
+	hr: HorizontalRule,
+	ul: UnorderedList,
+	ol: OrderedList,
+	li: ListItem,
+	table: Table,
+	th: TableHeader,
+	td: TableCell,
+}
+---
+
+<RootLayout>
+	<article class="space-y-4 p-3 sm:p-6">
+		<figure class="overflow-hidden border bg-muted text-center">
+			<img
+				src={thumbnail.src}
+				alt={`Thumbnail for article ${title}`}
+				class="w-full"
+			/>
+			{
+				thumbnailCredit && (
+					<figcaption class="py-2 text-xs text-muted-foreground">
+						{thumbnailCredit}
+					</figcaption>
+				)
+			}
+		</figure>
+
+		<div class="flex items-center text-sm font-medium text-muted-foreground">
+			<span class="flex items-center gap-2">
+				<span>Published at</span>
+				<time datetime={createdAt.toISOString()}>{formattedDate}</time>
+			</span>
+			<span class="mx-2">・</span>
+			<span>{readingTime} minute(s) read</span>
+		</div>
+
+		<h1>{title}</h1>
+		<p class="text-muted-foreground">{summary}</p>
+
+		<div class="flex items-center gap-2">
+			{tags.map((tag) => <span class="bg-muted px-2 py-1 text-sm">{tag}</span>)}
+		</div>
+		<hr class="border-border" />
+		<Content components={components} />
+	</article>
+</RootLayout>

@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config'
+import { transformerMetaHighlight } from '@shikijs/transformers'
 import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
-
 import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
@@ -17,11 +17,19 @@ export default defineConfig({
 			},
 			{
 				provider: fontProviders.fontsource(),
-				name: 'Geist Mono',
-				cssVariable: '--font-geist-mono',
-				weights: ['100 900'],
+				name: 'JetBrains Mono',
+				cssVariable: '--font-jetbrains-mono',
+				weights: ['400 900'],
+				display: 'swap',
+				fallbacks: ['monospace'],
 			},
 		],
+	},
+	markdown: {
+		shikiConfig: {
+			theme: 'github-dark-dimmed',
+			transformers: [transformerMetaHighlight()],
+		},
 	},
 	integrations: [mdx(), react()],
 	vite: {

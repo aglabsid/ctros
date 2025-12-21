@@ -5,7 +5,7 @@
 	--default-transition-duration: var(--default-transition-duration);
 
 	--font-sans: var(--font-gabarito);
-	--font-mono: var(--font-geist-mono);
+	--font-mono: var(--font-jetbrains-mono);
 
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
@@ -45,7 +45,8 @@
 
 	p,
 	span,
-	a {
+	a,
+	li {
 		@apply text-base sm:text-lg;
 	}
 
@@ -78,4 +79,31 @@
 		var(--border) 6px,
 		var(--border) 8px
 	);
+}
+
+/* Code block with line numbers */
+.astro-code {
+	counter-reset: line;
+	counter-increment: line 0;
+
+	@apply relative overflow-x-auto py-2 text-sm sm:text-base;
+}
+
+.astro-code code {
+	@apply grid;
+}
+
+.astro-code .line {
+	@apply px-3 leading-relaxed sm:px-4;
+}
+
+.astro-code .line::before {
+	content: counter(line);
+	counter-increment: line;
+
+	@apply mr-4 inline-block w-4 text-right text-muted-foreground/25 sm:mr-5;
+}
+
+.astro-code .line.highlighted {
+	@apply bg-primary/20;
 }

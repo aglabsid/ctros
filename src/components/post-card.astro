@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { ChevronRight } from 'lucide-react'
+import { formatDate } from '@/lib/utils'
 
 type Props = {
 	post: CollectionEntry<'post'>
@@ -8,12 +9,7 @@ type Props = {
 
 const { post } = Astro.props
 const { title, thumbnail, summary, tags, createdAt } = post.data
-
-const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
-	year: 'numeric',
-	month: 'short',
-	day: 'numeric',
-})
+const formattedDate = formatDate(createdAt, 'short')
 ---
 
 <article class="group isolate border">
