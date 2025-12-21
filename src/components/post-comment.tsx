@@ -14,7 +14,7 @@ export default function PostComment() {
 			emitMetadata="0"
 			inputPosition="top"
 			loading="lazy"
-			theme="dark_dimmed"
+			theme="transparent_dark"
 		/>
 	)
 }
