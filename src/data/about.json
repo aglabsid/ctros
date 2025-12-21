@@ -20,7 +20,7 @@
 			}
 		],
 		"social": {
-			"description": "Connect with me",
+			"description": "You can react me out via email at: <a href='mailto:hi@aglabs.id'>hi@aglabs.id</a> or via socials below:",
 			"links": [
 				{
 					"name": "GitHub",
