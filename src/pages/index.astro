@@ -22,10 +22,8 @@ const latestPosts = posts
 			Hi, I'm {about?.data.name ?? 'there'} 👋
 		</h1>
 		{
-			about?.data.summary && (
-				<p class="mt-2 text-pretty text-muted-foreground">
-					{about.data.summary}
-				</p>
+			about?.data.bio && (
+				<p class="mt-2 text-pretty text-muted-foreground">{about.data.bio}</p>
 			)
 		}
 	</section>

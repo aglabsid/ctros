@@ -34,7 +34,9 @@ const about = defineCollection({
 			avatar: image(),
 			name: z.string(),
 			username: z.string(),
+			headline: z.string(),
 			summary: z.string(),
+			bio: z.string(),
 			description: z.array(z.string()),
 			skills: z.array(
 				z.object({
