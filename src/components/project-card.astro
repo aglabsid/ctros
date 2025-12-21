@@ -16,6 +16,7 @@ const { title, thumbnail, description } = project.data
 			src={thumbnail.src}
 			alt={`Thumbnail for project ${title}`}
 			class="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+			transition:name={`project-thumbnail-${project.id}`}
 		/>
 		<a
 			href={`/works/${project.id}`}
@@ -29,7 +30,17 @@ const { title, thumbnail, description } = project.data
 	<div
 		class="flex-1 space-y-1 px-3 py-2 transition-colors group-hover:bg-muted/50"
 	>
-		<h3 class="text-xl font-bold">{title}</h3>
-		<p class="line-clamp-2 text-muted-foreground">{description}</p>
+		<h3
+			class="text-xl font-bold"
+			transition:name={`project-title-${project.id}`}
+		>
+			{title}
+		</h3>
+		<p
+			class="line-clamp-2 text-muted-foreground"
+			transition:name={`project-description-${project.id}`}
+		>
+			{description}
+		</p>
 	</div>
 </article>

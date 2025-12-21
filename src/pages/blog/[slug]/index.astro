@@ -30,6 +30,7 @@ const formattedDate = formatDate(createdAt, 'long')
 				src={thumbnail.src}
 				alt={`Thumbnail for article ${title}`}
 				class="w-full"
+				transition:name={`post-thumbnail-${post.id}`}
 			/>
 			{
 				thumbnailCredit && (
@@ -52,8 +53,13 @@ const formattedDate = formatDate(createdAt, 'long')
 				<span>{readingTime} minute(s) read</span>
 			</div>
 
-			<h1>{title}</h1>
-			<p class="text-muted-foreground">{summary}</p>
+			<h1 transition:name={`post-title-${post.id}`}>{title}</h1>
+			<p
+				class="text-muted-foreground"
+				transition:name={`post-description-${post.id}`}
+			>
+				{summary}
+			</p>
 
 			<div class="flex items-center gap-2">
 				{

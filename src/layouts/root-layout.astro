@@ -1,5 +1,6 @@
 ---
 import { Font } from 'astro:assets'
+import { ClientRouter } from 'astro:transitions'
 
 import MobileNav from '@/components/mobile-nav'
 import Navigation from './navigation.astro'
@@ -21,6 +22,7 @@ const pathname = Astro.url.pathname
 
 		<Font cssVariable="--font-gabarito" preload />
 		<Font cssVariable="--font-google-sans-code" />
+		<ClientRouter />
 	</head>
 	<body>
 		<Navigation />
