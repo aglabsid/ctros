@@ -14,6 +14,7 @@ import ListItem from './list-item.astro'
 import Table from './table.astro'
 import TableHeader from './table-header.astro'
 import TableCell from './table-cell.astro'
+import LinkPreview from './link-preview.astro'
 
 export const mdxComponents = {
 	h1: H1,
@@ -32,4 +33,5 @@ export const mdxComponents = {
 	table: Table,
 	th: TableHeader,
 	td: TableCell,
+	LinkPreview: LinkPreview,
 }
