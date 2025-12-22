@@ -7,7 +7,7 @@ import config from '../config'
 
 export default async (title?: string) => {
 	const about = await getEntry('about', 'main')
-	if (!about) throw new Error('About entry not found')
+	if (!about) throw new Error('About not found')
 
 	const { name, headline } = about.data
 	const avatarBuffer = await readFile(

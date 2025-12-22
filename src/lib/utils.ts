@@ -17,3 +17,13 @@ export function getReadingTime(text: string) {
 	const words = text.split(/\s+/).length
 	return Math.ceil(words / 200) || 1
 }
+
+export function getLinkFromOpenGraphUrl(url: string) {
+	try {
+		const urlObj = new URL(url)
+		urlObj.pathname = urlObj.pathname.replace(/\/open-graph\.png$/, '')
+		return urlObj.toString()
+	} catch (error) {
+		return url
+	}
+}
