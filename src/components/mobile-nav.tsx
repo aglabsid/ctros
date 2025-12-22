@@ -51,8 +51,8 @@ export default function MobileNav({ pathname }: { pathname: string }) {
 									'block border-b px-6 py-4 transition-colors hover:bg-muted/50',
 									{
 										'bg-muted/50':
-											(pathname === item.href && !item.hasDetails) ||
-											(pathname.startsWith(item.href) && item.hasDetails),
+											(pathname === item.href && item.isExact) ||
+											(pathname.startsWith(item.href) && !item.isExact),
 									},
 								)}
 								onClick={() => setIsOpen(false)}

@@ -2,26 +2,26 @@ export const navigations = [
 	{
 		title: 'Home',
 		href: '/',
-		hasDetails: false,
+		isExact: true,
 	},
 	{
 		title: 'About',
 		href: '/about',
-		hasDetails: false,
+		isExact: false,
 	},
 	{
 		title: 'Blog',
 		href: '/blog',
-		hasDetails: true,
+		isExact: false,
 	},
 	{
 		title: 'Works',
 		href: '/works',
-		hasDetails: true,
+		isExact: false,
 	},
 	{
 		title: 'Equipments',
 		href: '/equipments',
-		hasDetails: false,
+		isExact: false,
 	},
 ]
