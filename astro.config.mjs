@@ -10,10 +10,6 @@ import yeskunallumami from '@yeskunall/astro-umami'
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ctros.aglabs.id',
-	trailingSlash: 'never',
-	build: {
-		format: 'file',
-	},
 	experimental: {
 		fonts: [
 			{
