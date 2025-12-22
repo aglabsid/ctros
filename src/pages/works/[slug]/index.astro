@@ -18,7 +18,13 @@ const { title, thumbnail, description, demo, github } = project.data
 const { Content } = await render(project)
 ---
 
-<RootLayout>
+<RootLayout
+	metadata={{
+		title: title,
+		description: description,
+		noIndex: true,
+	}}
+>
 	<article>
 		<figure class="overflow-hidden bg-muted text-center">
 			<img

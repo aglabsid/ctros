@@ -81,6 +81,7 @@ const post = defineCollection({
 	loader: glob({ pattern: '**/*.mdx', base: './src/content/post' }),
 	schema: ({ image }) =>
 		z.object({
+			language: z.enum(['en', 'id']).default('id'),
 			title: z.string(),
 			thumbnail: image(),
 			thumbnailCredit: z.string(),

@@ -15,15 +15,36 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props
-const { title, thumbnail, thumbnailCredit, summary, tags, createdAt } =
-	post.data
+const {
+	language,
+	title,
+	thumbnail,
+	thumbnailCredit,
+	summary,
+	tags,
+	author,
+	createdAt,
+	updatedAt,
+} = post.data
 const { Content } = await render(post)
 
 const readingTime = getReadingTime(post.body ?? '')
 const formattedDate = formatDate(createdAt, 'long')
 ---
 
-<RootLayout>
+<RootLayout
+	metadata={{
+		title: title,
+		description: summary,
+		article: {
+			author: author,
+			publishedTime: createdAt.toISOString(),
+			modifiedTime: updatedAt.toISOString(),
+			tags: tags,
+			language: language,
+		},
+	}}
+>
 	<article>
 		<figure class="overflow-hidden bg-muted text-center">
 			<img

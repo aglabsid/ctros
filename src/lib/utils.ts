@@ -18,6 +18,10 @@ export function getReadingTime(text: string) {
 	return Math.ceil(words / 200) || 1
 }
 
+export function getOpenGraphImageUrl(url: string) {
+	return url.endsWith('/') ? `${url}open-graph.png` : `${url}/open-graph.png`
+}
+
 export function getLinkFromOpenGraphUrl(url: string) {
 	try {
 		const urlObj = new URL(url)

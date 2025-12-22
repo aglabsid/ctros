@@ -2,9 +2,9 @@
 	{
 		"id": "main",
 		"avatar": "./avatar.png",
-		"name": "Your Name",
-		"username": "yourusername",
-		"headline": "Software Developer",
+		"name": "Ctros by Aglabs",
+		"username": "aglabsid",
+		"headline": "Innovative Labs",
 		"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis scelerisque leo. Sed pulvinar ligula eu enim venenatis tincidunt.",
 		"bio": "Passionate software developer with a knack for creating efficient and scalable web applications. Experienced in both frontend and backend development, always eager to learn new technologies and improve coding skills.",
 		"description": [
