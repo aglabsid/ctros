@@ -1,48 +1,178 @@
-# Astro Starter Kit: Basics
+# Ctros
 
-```sh
-pnpm create astro@latest -- --template basics
+Minimal personal website template built with [Astro](https://astro.build).
+
+## Features
+
+- ⚡ **Fast & Lightweight** - Static site generation with Astro
+- 🖼️ **Dynamic Open Graph Images** - Auto-generated OG images for social sharing
+- 📝 **JSON & MDX Content** - Easy content management with JSON data and MDX for blog posts
+- 💬 **Post Comments** - Integrated commenting system powered by [Giscus](https://giscus.app/)
+- 🎨 **View Transitions** - Smooth page transitions with shared element animations
+- 🌙 **Dark Theme** - Beautiful dark mode design
+- 📱 **Responsive** - Mobile-first responsive layout
+- 🔍 **SEO Optimized** - Meta tags and structured data support
+
+## Tech Stack
+
+- [Astro](https://astro.build) - Static Site Generator
+- [React](https://react.dev) - UI Components
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- [MDX](https://mdxjs.com) - Content authoring
+- [Shiki](https://shiki.style) - Syntax highlighting
+- [Giscus](https://giscus.app) - Comments
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 22+
+- pnpm (recommended) or npm
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone git@github.com:aglabsid/ctros.git
+cd ctros
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+2. Install dependencies:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+```bash
+pnpm install
+```
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+3. Create environment variables:
 
-## 🚀 Project Structure
+```bash
+cp .env.example .env
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+4. Configure your environment variables (see [Configuration](#configuration))
 
-```text
-/
-├── public/
-│   └── favicon.svg
+5. Start the development server:
+
+```bash
+pnpm dev
+```
+
+## Configuration
+
+### Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Giscus Configuration
+PUBLIC_GISCUS_REPOSITORY_NAME=your-username/your-repo
+PUBLIC_GISCUS_REPOSITORY_ID=your-repo-id
+PUBLIC_GISCUS_CATEGORY_NAME=Announcements
+PUBLIC_GISCUS_CATEGORY_ID=your-category-id
+```
+
+### Setting up Giscus
+
+[Giscus](https://giscus.app/) is a comments system powered by GitHub Discussions.
+
+1. **Enable GitHub Discussions** on your repository:
+   - Go to your repository → Settings → General
+   - Scroll to "Features" section
+   - Check "Discussions"
+
+2. **Install the Giscus app**:
+   - Visit [github.com/apps/giscus](https://github.com/apps/giscus)
+   - Click "Install" and select your repository
+
+3. **Get your configuration values**:
+   - Go to [giscus.app](https://giscus.app/)
+   - Enter your repository name
+   - Choose your preferred settings
+   - Copy the `data-repo-id` and `data-category-id` values
+
+4. **Update your `.env` file** with the values from step 3
+
+For more details, see the [Giscus documentation](https://giscus.app/).
+
+## Project Structure
+
+```
+ctros/
+├── public/              # Static assets
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── components/      # UI components
+│   │   └── mdx/         # MDX components
+│   ├── content/         # Content collections
+│   │   ├── post/        # Blog posts (MDX)
+│   │   └── project/     # Projects (MDX)
+│   ├── data/            # JSON data files
+│   ├── layouts/         # Page layouts
+│   ├── lib/             # Utility functions
+│   ├── pages/           # Page routes
+│   └── styles/          # Global styles
+├── astro.config.mjs     # Astro configuration
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Content Management
 
-## 🧞 Commands
+### Blog Posts
 
-All commands are run from the root of the project, from a terminal:
+Create a new folder in `src/content/post/` with an `index.mdx` file:
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+```mdx
+---
+title: My Post Title
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo by Someone
+summary: A brief summary of the post
+tags:
+  - tag1
+  - tag2
+author: Your Name
+createdAt: 2025-01-01T10:00:00+00:00
+updatedAt: 2025-01-01T10:00:00+00:00
+---
 
-## 👀 Want to learn more?
+Your content here...
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Projects
+
+Create a new folder in `src/content/project/` with an `index.mdx` file:
+
+```mdx
+---
+title: Project Name
+thumbnail: ./thumbnail.png
+description: Project description
+category: web
+github: https://github.com/...
+demo: https://...
+---
+
+Project details here...
+```
+
+### Site Data
+
+Edit the JSON files in `src/data/` to customize:
+
+- `about.json` - Personal information
+- `software.json` - Software/tools you use
+- `hardware.json` - Hardware/equipment
+- `project-categories.json` - Project categories
+
+## Commands
+
+| Command        | Description               |
+| -------------- | ------------------------- |
+| `pnpm dev`     | Start development server  |
+| `pnpm build`   | Build for production      |
+| `pnpm preview` | Preview production build  |
+| `pnpm format`  | Format code with Prettier |
+
+## License
+
+MIT License
