@@ -4,6 +4,7 @@ import { transformerMetaHighlight } from '@shikijs/transformers'
 import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
 import tailwindcss from '@tailwindcss/vite'
+import yeskunallumami from '@yeskunall/astro-umami'
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,7 +33,14 @@ export default defineConfig({
 			transformers: [transformerMetaHighlight()],
 		},
 	},
-	integrations: [mdx(), react()],
+	integrations: [
+		mdx(),
+		react(),
+		yeskunallumami({
+			id: 'ef49fad8-8804-4c69-b639-a4f7aace59eb',
+			hostUrl: 'https://analytics.hendraaagil.dev',
+		}),
+	],
 	vite: {
 		plugins: [tailwindcss()],
 	},

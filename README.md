@@ -8,6 +8,7 @@ Minimal personal website template built with [Astro](https://astro.build).
 - 🖼️ **Dynamic Open Graph Images** - Auto-generated OG images for social sharing
 - 📝 **JSON & MDX Content** - Easy content management with JSON data and MDX for blog posts
 - 💬 **Post Comments** - Integrated commenting system powered by [Giscus](https://giscus.app/)
+- 📊 **Analytics** - Privacy-friendly analytics with [Umami](https://umami.is/)
 - 🎨 **View Transitions** - Smooth page transitions with shared element animations
 - 🌙 **Dark Theme** - Beautiful dark mode design
 - 📱 **Responsive** - Mobile-first responsive layout
@@ -21,6 +22,7 @@ Minimal personal website template built with [Astro](https://astro.build).
 - [MDX](https://mdxjs.com) - Content authoring
 - [Shiki](https://shiki.style) - Syntax highlighting
 - [Giscus](https://giscus.app) - Comments
+- [Umami](https://umami.is) - Analytics
 
 ## Getting Started
 
@@ -71,6 +73,41 @@ PUBLIC_GISCUS_REPOSITORY_ID=your-repo-id
 PUBLIC_GISCUS_CATEGORY_NAME=Announcements
 PUBLIC_GISCUS_CATEGORY_ID=your-category-id
 ```
+
+### Setting up Umami Analytics
+
+[Umami](https://umami.is/) is a simple, fast, privacy-focused analytics alternative to Google Analytics.
+
+This project uses [@yeskunall/astro-umami](https://github.com/yeskunall/astro-umami) integration.
+
+1. **Create an Umami account**:
+   - Sign up at [cloud.umami.is](https://cloud.umami.is/) (hosted) or self-host your own instance
+
+2. **Add your website**:
+   - Go to Settings → Websites → Add website
+   - Enter your website name and domain
+
+3. **Get your Website ID**:
+   - Click on your website in the dashboard
+   - Copy the Website ID from the tracking code
+
+4. **Update `astro.config.mjs`**:
+
+   ```js
+   import yeskunallumami from '@yeskunall/astro-umami'
+
+   export default defineConfig({
+   	integrations: [
+   		// ...other integrations
+   		yeskunallumami({
+   			id: 'your-website-id',
+   			hostUrl: 'https://cloud.umami.is', // or your self-hosted URL
+   		}),
+   	],
+   })
+   ```
+
+For more details, see the [Umami documentation](https://umami.is/docs).
 
 ### Setting up Giscus
 
