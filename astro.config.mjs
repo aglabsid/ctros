@@ -1,14 +1,16 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config'
 import { transformerMetaHighlight } from '@shikijs/transformers'
-import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
+import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import yeskunallumami from '@yeskunall/astro-umami'
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ctros.aglabs.id',
+	trailingSlash: 'never',
 	experimental: {
 		fonts: [
 			{
@@ -36,6 +38,7 @@ export default defineConfig({
 	integrations: [
 		mdx(),
 		react(),
+		sitemap(),
 		yeskunallumami({
 			id: 'ef49fad8-8804-4c69-b639-a4f7aace59eb',
 			hostUrl: 'https://analytics.hendraaagil.dev',
