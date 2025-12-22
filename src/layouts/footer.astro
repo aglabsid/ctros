@@ -3,7 +3,7 @@
 		class="mx-auto flex w-full max-w-5xl items-center justify-between border-x p-3 sm:p-6"
 	>
 		<p class="text-sm sm:text-base">
-			&copy; <span id="current-year" class="text-sm sm:text-base">2026</span> by Aglabs
+			&copy; {new Date().getFullYear()} by Aglabs
 		</p>
 
 		<a
@@ -16,10 +16,3 @@
 		</a>
 	</div>
 </footer>
-
-<script>
-	const yearElement = document.getElementById('current-year')
-	if (yearElement) {
-		yearElement.textContent = new Date().getFullYear().toString()
-	}
-</script>
