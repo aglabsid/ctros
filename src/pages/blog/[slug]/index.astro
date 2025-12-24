@@ -5,6 +5,7 @@ import PostComment from '@/components/post-comment'
 
 import { mdxComponents } from '@/components/mdx'
 import { formatDate, getReadingTime } from '@/lib/utils'
+import Badge from '@/components/badge'
 
 export async function getStaticPaths() {
 	const posts = await getCollection('post')
@@ -83,11 +84,7 @@ const formattedDate = formatDate(createdAt, 'long')
 			</p>
 
 			<div class="flex items-center gap-2">
-				{
-					tags.map((tag) => (
-						<span class="bg-muted px-2 py-1 text-sm">{tag}</span>
-					))
-				}
+				{tags.map((tag) => <Badge>{tag}</Badge>)}
 			</div>
 		</div>
 

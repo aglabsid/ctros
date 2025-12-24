@@ -2,6 +2,7 @@
 import { getEntry } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import SectionHeader from '@/components/section-header.astro'
+import Badge from '@/components/badge'
 
 const about = await getEntry('about', 'main')
 if (!about) {
@@ -39,7 +40,7 @@ const { avatar, name, username, description, skills, social } = about.data
 						<h3 class="mb-1 text-lg font-semibold sm:text-xl">{skill.name}</h3>
 						<ul class="flex flex-wrap gap-2">
 							{skill.items.map((item) => (
-								<li class="bg-muted px-2.5 py-1 text-sm">{item}</li>
+								<Badge as="li">{item}</Badge>
 							))}
 						</ul>
 					</div>
