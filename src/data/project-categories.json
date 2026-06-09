@@ -1,14 +1,17 @@
 [
 	{
 		"id": "personal",
-		"name": "Personal"
+		"name": "Personal",
+		"position": 1
 	},
 	{
 		"id": "abc-pte-ltd",
-		"name": "ABC Pte Ltd"
+		"name": "ABC Pte Ltd",
+		"position": 2
 	},
 	{
 		"id": "acme-corp",
-		"name": "Acme Corp"
+		"name": "Acme Corp",
+		"position": 3
 	}
 ]
