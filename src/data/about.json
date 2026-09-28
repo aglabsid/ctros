@@ -2,7 +2,8 @@
 	{
 		"id": "main",
 		"avatar": "./avatar.png",
-		"name": "Ctros by Aglabs",
+		"firstName": "Ctros",
+		"lastName": "by Aglabs",
 		"username": "aglabsid",
 		"email": "hello@example.com",
 		"cv": "https://example.com/cv.pdf",
