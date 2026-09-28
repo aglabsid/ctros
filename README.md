@@ -8,6 +8,7 @@ Minimal personal website template built with [Astro](https://astro.build).
 - 🖼️ **Dynamic Open Graph Images** - Auto-generated OG images for social sharing
 - 📝 **JSON & MDX Content** - Easy content management with JSON data and MDX for blog posts
 - 💬 **Post Comments** - Integrated commenting system powered by [Giscus](https://giscus.app/)
+- 🔔 **Discord Notifications** - Optional GitHub Action that announces new posts to Discord
 - 📊 **Analytics** - Privacy-friendly analytics with [Umami](https://umami.is/)
 - 🎨 **View Transitions** - Smooth page transitions with shared element animations
 - 🌙 **Dark Theme** - Beautiful dark mode design
@@ -132,6 +133,27 @@ For more details, see the [Umami documentation](https://umami.is/docs).
 
 For more details, see the [Giscus documentation](https://giscus.app/).
 
+### Setting up Discord Notifications
+
+`.github/workflows/discord-notify.yml` posts a message to Discord whenever a new post is pushed to `main`. It is disabled by default.
+
+1. **Create a webhook**: Discord channel → Edit Channel → Integrations → Webhooks → New Webhook, then copy the URL
+
+2. **Add repository settings** (Settings → Secrets and variables → Actions):
+   - Secret `DISCORD_WEBHOOK_URL` - the webhook URL
+   - Variable `SITE_URL` - your site URL, e.g. `https://example.com`
+   - Variable `DISCORD_ROLE_ID` (optional) - role to mention
+
+3. **Enable the trigger** by uncommenting the `push` block in the workflow:
+
+   ```yaml
+   on:
+     workflow_dispatch:
+     push:
+       branches: [main]
+       paths: ['src/content/post/**/index.mdx']
+   ```
+
 ## Project Structure
 
 ```
@@ -196,7 +218,7 @@ Project details here...
 
 Edit the JSON files in `src/data/` to customize:
 
-- `about.json` - Personal information
+- `about.json` - Personal information (`firstName`, `lastName`, `headline`, `email`, `cv`, bio, skills, social links)
 - `software.json` - Software/tools you use
 - `hardware.json` - Hardware/equipment
 - `project-categories.json` - Project categories
