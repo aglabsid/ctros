@@ -29,8 +29,8 @@ Minimal personal website template built with [Astro](https://astro.build).
 
 ### Prerequisites
 
-- Node.js 22+
-- pnpm (recommended) or npm
+- Node.js 24+
+- pnpm 12.14+ (recommended) or npm
 
 ### Installation
 
