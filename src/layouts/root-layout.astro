@@ -5,6 +5,7 @@ import { getEntry } from 'astro:content'
 import { getOpenGraphImageUrl, stripHtmlExtension } from '@/lib/utils'
 
 import MobileNav from '@/components/mobile-nav'
+import LoadingBar from '@/components/loading-bar.astro'
 import Navigation from './navigation.astro'
 import Footer from './footer.astro'
 
@@ -115,6 +116,8 @@ const isArticle = !!props.metadata?.article
 		<ClientRouter />
 	</head>
 	<body>
+		<LoadingBar />
+
 		<Navigation />
 		<MobileNav client:media="(max-width: 640px)" pathname={pathname} />
 
